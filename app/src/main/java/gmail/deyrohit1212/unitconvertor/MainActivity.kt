@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -32,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import gmail.deyrohit1212.unitconvertor.ui.theme.UnitConvertorTheme
@@ -52,8 +54,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
     }
 }
+
 
 @Composable
 fun UnitConvertor() {
@@ -66,9 +70,10 @@ fun UnitConvertor() {
     var iExpanded by remember { mutableStateOf(false) }
     var oExpanded by remember { mutableStateOf(false) }
 
+
     fun resultconversion() {
         val inputvalue = input.toDoubleOrNull() ?: 0.0
-        val result = (inputvalue * factor * 100.0/factoroutput).roundToInt() / 100.00
+        val result = (inputvalue * factor * 10000.0/factoroutput).roundToInt() / 10000.00
         output = result.toString()
     }
     Column(
@@ -82,11 +87,16 @@ fun UnitConvertor() {
         Spacer(modifier = Modifier.height(40.dp))
 
         OutlinedTextField(value = input
-            , onValueChange = {
-            input = it
-            resultconversion()
+            , onValueChange = {input1 ->
+                if(input1.all { it.isDigit() || it =='.' })
+                {
+                    input=input1
+                    resultconversion()
+                }
         },
-            label = { Text("Enter the value") })
+            label = { Text("Enter the value") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
         Spacer(modifier = Modifier.height(15.dp))
 
         Row {
