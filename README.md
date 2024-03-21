@@ -13,7 +13,7 @@ Length Conversions: Convert between various length units.
 User-Friendly Interface: Simple and intuitive design for seamless usability
 Length Types : Can be converted to meter, centimeter, milimeter, kilometer,inches , miles
 
-Here are the few Screenshort of Unit Convertor App
+Here are the few Screenshot of Unit Convertor App
 
 ![i1](https://github.com/deyrohit/Unit-Convertor-App/assets/88137895/1cc185c6-e778-4e87-8025-a99420ea3f98)
 
